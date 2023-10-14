@@ -1,4 +1,6 @@
 use serde::Serialize;
+use crate::constant::RED;
+
 use super::embed::Embed;
 
 #[derive(Serialize)]
@@ -23,5 +25,15 @@ impl Webhook {
                 serde_json::to_string(self).unwrap()
             )
         .send().await.unwrap();
+    }
+
+    pub async fn send_errror(message: String) {
+        let mut webhook = Self::new();
+        webhook.embeds.insert(0, Embed {
+            title: String::from("__**Une erreur est survenue :"),
+            description: message,
+            color: RED,
+            image: None
+        });
     }
 }
