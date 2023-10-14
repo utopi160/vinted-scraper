@@ -3,7 +3,7 @@ use serde::Deserialize;
 
 #[derive(Deserialize, Debug)]
 pub struct Configuration {
-    basic_search: Vec<configuration::BasicSearch>
+    pub basic_search: Vec<configuration::BasicSearch>
 }
 
 pub mod configuration {
