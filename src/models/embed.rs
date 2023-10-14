@@ -1,8 +1,10 @@
+use serde::Serialize;
 use super::embed_image::EmbedImage;
 
+#[derive(Serialize)]
 pub struct Embed {
-    title: String, 
-    description: String,
-    image: EmbedImage,
-    color: u32
+    pub title: String, 
+    pub description: String,
+    pub image: Option<EmbedImage>,
+    pub color: u32
 }
