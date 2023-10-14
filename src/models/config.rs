@@ -6,7 +6,6 @@ pub struct Configuration {
     basic_search: Vec<configuration::BasicSearch>
 }
 
-
 pub mod configuration {
     use serde::Deserialize;
 
