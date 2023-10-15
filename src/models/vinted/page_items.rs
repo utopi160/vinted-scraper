@@ -5,5 +5,5 @@ use super::catalog_items::CatalogItems;
 #[allow(non_snake_case)]
 
 pub struct PageItems {
-    catalogItems: CatalogItems
+    pub catalogItems: CatalogItems
 }

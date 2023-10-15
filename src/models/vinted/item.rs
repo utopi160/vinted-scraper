@@ -1,7 +1,9 @@
 use serde::Deserialize;
+use super::item_photo::ItemPhoto;
 
 #[derive(Deserialize, Debug)]
 pub struct Item {
-    id: u32,
-    title: String
+    pub id: u32,
+    pub title: String,
+    pub photo: ItemPhoto
 }

@@ -1,7 +1,7 @@
 {
     "basic_search":[
         {
-            "path": "Jogging%20Lacost=&search_text=Jogging%20Lacost",
+            "path": "search_text=Jogging%20Lacost&order=newest_first",
             "vip": false
         }
     ]

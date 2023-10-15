@@ -1,4 +1,6 @@
-use crate::models::{webhook::Webhook, vinted::{items::Items, catalog_items::CatalogItems, page::Page}, scraper::Scraper};
+use std::collections::HashMap;
+
+use crate::models::{webhook::Webhook, vinted::{page::Page, item::Item}, scraper::Scraper};
 
 async fn vinted_get(path: String) -> String {
     let client = reqwest::Client::new();
@@ -20,11 +22,9 @@ async fn vinted_get(path: String) -> String {
     return res.unwrap().text().await.unwrap();
 }
 
-pub async fn vinted_process_catalog(search: String) {
+pub async fn vinted_process_catalog(search: String) -> HashMap<u32, Item> {
     let page = vinted_get(format!("catalog?{}", search)).await;
 
-    let a = Scraper::build(r#"{"intl":"#.to_owned(), "{".to_owned())
-        .process_json::<Page>(page);
-
-    println!("Ke sios aaa {:?}", a);
+    return Scraper::build(r#"{"intl":"#.to_owned(), "{".to_owned())
+        .process_json::<Page>(page).items.catalogItems.byId;
 }

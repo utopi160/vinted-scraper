@@ -1,7 +1,7 @@
 use std::fs::{self, File};
 use serde::Deserialize;
 
-#[derive(Deserialize, Debug)]
+#[derive(Deserialize, Clone, Debug)]
 pub struct Configuration {
     pub basic_search: Vec<configuration::BasicSearch>
 }
@@ -9,9 +9,10 @@ pub struct Configuration {
 pub mod configuration {
     use serde::Deserialize;
 
-    #[derive(Deserialize, Debug)]
+    #[derive(Deserialize, Clone, Debug)]
     pub struct BasicSearch {
         pub path: String,
+        pub last_scan: Option<i64>,
         pub vip: bool
     }
 }
