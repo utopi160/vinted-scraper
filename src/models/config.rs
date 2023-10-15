@@ -11,8 +11,8 @@ pub mod configuration {
 
     #[derive(Deserialize, Debug)]
     pub struct BasicSearch {
-        path: String,
-        vip: bool
+        pub path: String,
+        pub vip: bool
     }
 }
 

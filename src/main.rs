@@ -1,6 +1,6 @@
-use std::{thread, time::Duration};
-
-use crate::{models::{config::Configuration, webhook::Webhook, embed::Embed}, constant::BLUE};
+use std::{time::Duration};
+use crate::{models::{config::Configuration}};
+use crate::vinted::vinted_process_catalog;
 
 mod models;
 mod vinted;
@@ -14,8 +14,8 @@ async fn main() {
     let duration = Duration::from_secs(10);
     loop {
         for search in &config.basic_search  {
-            
-            tokio::time::sleep(duration);
+            vinted_process_catalog(search.path.clone()).await;
+            tokio::time::sleep(duration).await;
         }
     }
 }
