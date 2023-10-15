@@ -1,5 +1,5 @@
 use serde::de::DeserializeOwned;
-use super::vinted::catalog_items::CatalogItems;
+use super::webhook::Webhook;
 
 pub struct Scraper {
     start: String,
@@ -14,7 +14,7 @@ impl Scraper {
         };
     }
 
-    pub fn process_json<T>(&self, text: String) -> T 
+    pub async fn process_json<T>(&self, text: String) -> Option<T>
     where
         T: DeserializeOwned
     {
@@ -25,10 +25,16 @@ impl Scraper {
         }
 
         let start_of_text = &text[start_idx.unwrap()..];
-        let rest_of_json = &start_of_text[start_of_text.find("{").unwrap()..];
+        let rest_of_json = &start_of_text[start_of_text.find(&self.end).unwrap()..];
         let json_end = rest_of_json.find("</script>").unwrap();
 
-        let json = serde_json::from_str::<T>(&rest_of_json[..json_end]).unwrap();
-        return json;
+        let json = serde_json::from_str::<T>(&rest_of_json[..json_end]);
+
+        if let Err(e) = json {
+            Webhook::send_errror(format!("Process json -> ** {:?}", e)).await;
+            return None
+        }
+
+        return Some(json.unwrap());
     }
 }

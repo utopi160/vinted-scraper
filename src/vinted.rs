@@ -25,6 +25,8 @@ async fn vinted_get(path: String) -> String {
 pub async fn vinted_process_catalog(search: String) -> HashMap<u32, Item> {
     let page = vinted_get(format!("catalog?{}", search)).await;
 
-    return Scraper::build(r#"{"intl":"#.to_owned(), "{".to_owned())
-        .process_json::<Page>(page).items.catalogItems.byId;
+    let scraper = Scraper::build(r#"{"intl":"#.to_owned(), "{".to_owned())
+        .process_json::<Page>(page).await;
+
+    return if scraper.is_some() { scraper.unwrap().items.catalogItems.byId } else { HashMap::new() };
 }

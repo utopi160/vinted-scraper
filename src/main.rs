@@ -1,5 +1,5 @@
 use std::{time::Duration};
-use chrono::{NaiveDateTime, Utc, DateTime};
+use chrono::Utc;
 use crate::{models::{config::Configuration}};
 use crate::vinted::vinted_process_catalog;
 use crate::models::webhook::Webhook;
@@ -28,11 +28,11 @@ async fn main() {
 
                 if diff < last_scan {
                     println!("J'envoie -> {} ({}s)", item.id, diff);
-                    
+
                     let mut webhook = Webhook::new();
                     webhook.embeds.insert(0, Embed { 
                         title: String::from("__**Nouveau Article :**__"), 
-                        description: format!("**ID :** #{}\n**Titre :** {}\n**Prix :** {}€\n\nIl y a <t:{}> ", item.id, item.title, item.total_item_price.amount, diff),
+                        description: format!("**ID :** #{}\n**Titre :** {}\n**Prix :** {}€\n\nIl y a <t:{}:R> ", item.id, item.title, item.total_item_price.amount, item.photo.high_resolution.timestamp),
                         image: Some(EmbedImage {
                             url: item.photo.url
                         }), color: ORANGE 
