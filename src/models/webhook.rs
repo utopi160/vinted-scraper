@@ -1,5 +1,6 @@
+use reqwest::IntoUrl;
 use serde::Serialize;
-use crate::constant::RED;
+use crate::constant::{RED, WEBHOOK_ERRORS};
 
 use super::embed::Embed;
 
@@ -17,7 +18,10 @@ impl Webhook {
         };
     }
 
-    pub async fn send(&self, url: String) {
+    pub async fn send<T>(&self, url: T)
+    where
+        T: IntoUrl
+    {
         reqwest::Client::new()
             .post(url)
             .header("Content-Type", "application/json")
@@ -35,5 +39,7 @@ impl Webhook {
             color: RED,
             image: None
         });
+
+        webhook.send(WEBHOOK_ERRORS).await;
     }
 }
