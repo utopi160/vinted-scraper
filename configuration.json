@@ -3,6 +3,18 @@
         {
             "path": "search_text=Jogging%20Lacost&order=newest_first",
             "vip": false
+        },
+        {
+            "path": "search_text=Pulls%20Cahart&order=newest_first",
+            "vip": false
+        },
+        {
+            "path": "search_text=Chaussure%20Nike&order=newest_first",
+            "vip": false
+        },
+        {
+            "path": "search_text=T-shirt&order=newest_first",
+            "vip": false
         }
     ]
 }
