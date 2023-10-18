@@ -21,7 +21,8 @@ impl Scraper {
         let start_idx = text.find(&self.start);
 
         if start_idx.is_none() {
-            panic!("Ahooooooooooooooo");
+            println!("Error<process_json>: {:?}", text);
+            return None;
         }
 
         let start_of_text = &text[start_idx.unwrap()..];
