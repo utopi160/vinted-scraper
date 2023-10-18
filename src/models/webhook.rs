@@ -22,13 +22,15 @@ impl Webhook {
     where
         T: IntoUrl
     {
-        reqwest::Client::new()
+        if let Err(e) = reqwest::Client::new()
             .post(url)
             .header("Content-Type", "application/json")
             .body(
                 serde_json::to_string(self).unwrap()
             )
-        .send().await.unwrap();
+        .send().await {
+            println!("Error discord: -> {}", e);
+        };
     }
 
     pub async fn send_errror(message: String) {
