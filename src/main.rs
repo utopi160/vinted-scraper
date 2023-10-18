@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+use std::sync::{Arc, Mutex};
 use std::time::Duration;
 use chrono::Utc;
 use crate::models::config::Configuration;
@@ -14,26 +16,34 @@ mod constant;
 #[tokio::main]
 async fn main() {
     println!("Loading the configuration file ...");
-    let mut config = Configuration::get();
+    let config = Configuration::get();
     
     let duration = Duration::from_secs(10);
+    let mut last_scans = Arc::new(Mutex::new(HashMap::new()));
     let mut queries = 0;
+
+    // config.basic_search[id_cloned].last_scan = Some(now);
 
     loop {
         for (id, search) in config.basic_search.clone().iter().enumerate() {
-            queries += 1;
-            
-            if queries > 28 {
-                tokio::time::sleep(duration).await;
-            }
+            let cloned_search = search.clone();
+            let cloned_id = id.clone();
 
-            let items = vinted_process_catalog(search.path.clone()).await;
-            let now = Utc::now().timestamp();
-            let last_scan = now - search.last_scan.unwrap_or(now);
-            
-            let webhook_url = search.webhook.clone();
+            let last_scans_clone = Arc::clone(&last_scans);
 
             tokio::spawn(async move {
+                queries += 1;
+            
+                if queries > 28 {
+                    tokio::time::sleep(duration).await;
+                }
+    
+                let items = vinted_process_catalog(cloned_search.path.clone()).await;
+                let now = Utc::now().timestamp();
+                let last_scan = now - cloned_search.last_scan.unwrap_or(now);
+                
+                let webhook_url = cloned_search.webhook.clone();
+    
                 for (_, item) in items  {
                     if item.photo.is_some() {
                         let photo = item.photo.unwrap();
@@ -60,9 +70,10 @@ async fn main() {
                         }
                     }
                 }
-            });
 
-            config.basic_search[id].last_scan = Some(now);
+                let mut last_scans_guard = last_scans_clone.lock().unwrap();
+                last_scans_guard.insert(cloned_id, now);
+            });
         }
     }
 }
