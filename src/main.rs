@@ -33,8 +33,14 @@ async fn main() {
     
                         let mut webhook = Webhook::new();
                         webhook.embeds.insert(0, Embed { 
-                            title: String::from("__**Nouveau Article :**__"), 
-                            description: format!("**ID :** #{}\n**Titre :** {}\n**Prix :** {}€\n\n{}\n\nIl y a <t:{}:R> ", item.id, item.title, item.total_item_price.amount, item.url, photo.high_resolution.timestamp),
+                            title: String::from("__**Nouveau Article :**__"),  /*        "**ID :** #{}\n**Titre :** {}\n**Prix :** {}€\n\n{}\n\nIl y a <t:{}:R> ", 
+                            item.id, item.title, item.total_item_price.amount, item.url, photo.high_resolution.timestamp */
+                            description: format!(
+                                "**Titre :** {}\n**Marque :** {}\n**Taille :** {}\n**Prix :** {}€\n**Posté :**  <t:{}:R>\n\n{}",
+                                item.title, item.brand_title, item.size_title, item.total_item_price.amount, photo.high_resolution.timestamp,
+                                item.url
+                            ),
+                            
                             image: Some(EmbedImage {
                                 url: photo.url
                             }), color: ORANGE 
