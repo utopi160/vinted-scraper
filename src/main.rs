@@ -17,8 +17,16 @@ async fn main() {
     let mut config = Configuration::get();
     
     let duration = Duration::from_secs(10);
+    let mut queries = 0;
+
     loop {
         for (id, search) in config.basic_search.clone().iter().enumerate() {
+            queries += 1;
+            
+            if queries > 28 {
+                tokio::time::sleep(duration).await;
+            }
+
             let items = vinted_process_catalog(search.path.clone()).await;
             let now = Utc::now().timestamp();
             let last_scan = now - search.last_scan.unwrap_or(now);
@@ -52,7 +60,5 @@ async fn main() {
 
             config.basic_search[id].last_scan = Some(now);
         }
-
-        tokio::time::sleep(duration).await;
     }
 }
