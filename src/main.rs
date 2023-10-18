@@ -24,21 +24,24 @@ async fn main() {
             let last_scan = now - search.last_scan.unwrap_or(now);
 
             for (_, item) in items  {
-                let diff = now - item.photo.high_resolution.timestamp;
+                if item.photo.is_some() {
+                    let photo = item.photo.unwrap();
+                    let diff = now - photo.high_resolution.timestamp;
 
-                if diff < last_scan {
-                    println!("J'envoie -> {} ({}s)", item.id, diff);
-
-                    let mut webhook = Webhook::new();
-                    webhook.embeds.insert(0, Embed { 
-                        title: String::from("__**Nouveau Article :**__"), 
-                        description: format!("**ID :** #{}\n**Titre :** {}\n**Prix :** {}€\n\n{}\n\nIl y a <t:{}:R> ", item.id, item.title, item.total_item_price.amount, item.url, item.photo.high_resolution.timestamp),
-                        image: Some(EmbedImage {
-                            url: item.photo.url
-                        }), color: ORANGE 
-                    });
-
-                    webhook.send("https://discord.com/api/webhooks/1163096654879137874/2Jy6yuHow-Nbnr8neP1p1MviqcyA-ufoaBLZmJTRTEn2gCixT4p9faq3jBR0NW_H1FWC").await;
+                    if diff < last_scan {
+                        println!("J'envoie -> {} ({}s)", item.id, diff);
+    
+                        let mut webhook = Webhook::new();
+                        webhook.embeds.insert(0, Embed { 
+                            title: String::from("__**Nouveau Article :**__"), 
+                            description: format!("**ID :** #{}\n**Titre :** {}\n**Prix :** {}€\n\n{}\n\nIl y a <t:{}:R> ", item.id, item.title, item.total_item_price.amount, item.url, photo.high_resolution.timestamp),
+                            image: Some(EmbedImage {
+                                url: photo.url
+                            }), color: ORANGE 
+                        });
+    
+                        webhook.send("https://discord.com/api/webhooks/1163096654879137874/2Jy6yuHow-Nbnr8neP1p1MviqcyA-ufoaBLZmJTRTEn2gCixT4p9faq3jBR0NW_H1FWC").await;
+                    }
                 }
             }
 
