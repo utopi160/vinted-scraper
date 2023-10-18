@@ -1,18 +1,67 @@
 {
     "basic_search":[
+
         {
-            "path": "search_text=Jogging%20Lacost&order=newest_first",
-            "webhook": "https://discord.com/api/webhooks/1163096654879137874/2Jy6yuHow-Nbnr8neP1p1MviqcyA-ufoaBLZmJTRTEn2gCixT4p9faq3jBR0NW_H1FWC",
+            "path": "search_text=Lacoste%20Polos&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164226977029439518/FdwP7cfPLCLRyDXNHOF4KHGZ4TLy-rLOzQJ93g5O90mS01bRUkPKSqeJkzDT2o0oQG9I",
             "vip": false
         },
         {
-            "path": "search_text=Pulls%20Cahart&order=newest_first",
-            "webhook": "https://discord.com/api/webhooks/1164180247424544789/uLp922EodtBGmRxnLmPryhRMRFn6agTiqQHBJ4MvUZLNlNzSjpFJrLPNyoCU7PjtGUI5",
+            "path": "search_text=Short%20Lacoste&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164226977029439518/FdwP7cfPLCLRyDXNHOF4KHGZ4TLy-rLOzQJ93g5O90mS01bRUkPKSqeJkzDT2o0oQG9I",
             "vip": false
         },
         {
-            "path": "search_text=Chaussure%20Nike&order=newest_first",
-            "webhook": "https://discord.com/api/webhooks/1164180332975755264/5FMnr3RBBwvLoNixeNnsDtTzmlVkugNNNoZ8s9Yk-LdBN2Ypq1eyBvQPNDDKymD1O4gt",
+            "path": "search_text=Jogging%20Lacoste&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164227440290320506/6ah3P1_KkGOfMnSr3CUCdEJZ6eorAfh9MnSGhLA5kGJB6kQL891nCIqqJRln9UQvSlsk",
+            "vip": false
+        },
+
+        {
+            "path": "search_text=Jean%20Levi%27s&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164228163589644298/BEnlLiZsP0AYBRn0e9a2Y0MpoIwejKUEgpEjDxQ5lXU9qNFxIkajBNqj7r0iWpcTqUjd",
+            "vip": false
+        },
+        {
+            "path": "search_text=T-shirt%20Levi%27s&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164228437301547050/oiyFucWU-gyAp0Ech6rJ1OAct2bXud-af7EegCMS4mKfp1vAgovbV_5tkcetgkks7EBY",
+            "vip": false
+        },
+        {
+            "path": "search_text=Pull%20Levi%27s&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164228680717971546/3sNhQ7tzQtBtJ_16oAt6s68KzNxOICSblHkk3eHcJQutwHgJDpVBeMaa8FHsPdQ1or1w",
+            "vip": false
+        },
+
+        {
+            "path": "search_text=Jogging%20Puma&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164229364167217303/8mkUK2gsQaH0NWy2v1lkWrGUccZ-Rb1Hz0MPUfMxd9RfNgeubY7VuSwcOgNktLt-yI-s",
+            "vip": false
+        },
+        {
+            "path": "search_text=T-shirt%20Puma&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164229698742652928/VaeqdeoOnYEfiBs_IOCRXJEe1I53COrsgwz_GeD7UkOLNsj_JSgJhx3NGY2fVvIYCemq",
+            "vip": false
+        },
+        {
+            "path": "search_text=Chaussure%20Puma&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164230040800735242/W56gzoX3wNiGBdeM9C6snVRIZK_HbT8D6Uht6CA-Xo7mfFgrWqilyk28Xo_mcEKA6M9A",
+            "vip": false
+        },
+
+        {
+            "path": "search_text=Chaussure%20Addidas&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164230663445168198/mIXX-BxugnV4uSxLRET9DPTu60Qka4N35ybiDbxqv30XScM09Hc4LfB4YcL9XffO0cfA",
+            "vip": false
+        },
+        {
+            "path": "search_text=Jogging%20Addidas&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164230766465650698/ETQBpH_tCC1vaOQxtuMH5i02NIkDRlxBWLXj34GikYJpbyDZWFsSk-ZzK2xxyj_uXPoe",
+            "vip": false
+        },
+        {
+            "path": "search_text=T-shirt%20Addidas&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164230857528197161/12ryywlWBx1F9yqTyRQcWvMnBiuyP0TFJi2XyNNDZ5u4vp8bns5WOmN5UUplIDzkJIXW",
             "vip": false
         }
     ]
