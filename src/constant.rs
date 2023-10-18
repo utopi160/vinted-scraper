@@ -1,5 +1,7 @@
 // COLORS
 
+#[allow(dead_code)]
+
 pub static BLUE: u32 = 3447003;
 pub static RED: u32 = 15158332;
 pub static YELLOW: u32 = 15844367;
