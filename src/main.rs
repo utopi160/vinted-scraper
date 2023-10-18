@@ -30,33 +30,37 @@ async fn main() {
             let items = vinted_process_catalog(search.path.clone()).await;
             let now = Utc::now().timestamp();
             let last_scan = now - search.last_scan.unwrap_or(now);
+            
+            let webhook_url = search.webhook.clone();
 
-            for (_, item) in items  {
-                if item.photo.is_some() {
-                    let photo = item.photo.unwrap();
-                    let diff = now - photo.high_resolution.timestamp;
-
-                    if diff < last_scan {
-                        println!("J'envoie -> {} ({}s)", item.id, diff);
+            tokio::spawn(async move {
+                for (_, item) in items  {
+                    if item.photo.is_some() {
+                        let photo = item.photo.unwrap();
+                        let diff = now - photo.high_resolution.timestamp;
     
-                        let mut webhook = Webhook::new();
-                        webhook.embeds.insert(0, Embed { 
-                            title: String::from("__**Nouveau Article :**__"),
-                            description: format!(
-                                "**Titre :** {}\n**Marque :** {}\n**Taille :** {}\n**Prix :** {}€\n**Posté :**  <t:{}:R>\n\n{}",
-                                item.title, item.brand_title, item.size_title, item.total_item_price.amount, photo.high_resolution.timestamp,
-                                item.url
-                            ),
-
-                            image: Some(EmbedImage {
-                                url: photo.url
-                            }), color: ORANGE 
-                        });
+                        if diff < last_scan {
+                            println!("J'envoie -> {} ({}s)", item.id, diff);
+        
+                            let mut webhook = Webhook::new();
+                            webhook.embeds.insert(0, Embed { 
+                                title: String::from("__**Nouveau Article :**__"),
+                                description: format!(
+                                    "**Titre :** {}\n**Marque :** {}\n**Taille :** {}\n**Prix :** {}€\n**Posté :**  <t:{}:R>\n\n{}",
+                                    item.title, item.brand_title, item.size_title, item.total_item_price.amount, photo.high_resolution.timestamp,
+                                    item.url
+                                ),
     
-                        webhook.send(&search.webhook).await;
+                                image: Some(EmbedImage {
+                                    url: photo.url
+                                }), color: ORANGE 
+                            });
+        
+                            webhook.send(&webhook_url).await;
+                        }
                     }
                 }
-            }
+            });
 
             config.basic_search[id].last_scan = Some(now);
         }
