@@ -1,11 +1,11 @@
-use std::{time::Duration};
+use std::time::Duration;
 use chrono::Utc;
-use crate::{models::{config::Configuration}};
+use crate::models::config::Configuration;
 use crate::vinted::vinted_process_catalog;
 use crate::models::webhook::Webhook;
 use crate::models::embed::Embed;
 use crate::models::embed_image::EmbedImage;
-use crate::constant::{ORANGE};
+use crate::constant::ORANGE;
 
 mod models;
 mod vinted;
