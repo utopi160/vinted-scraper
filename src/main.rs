@@ -51,7 +51,8 @@ async fn main() {
             }
 
             config.basic_search[id].last_scan = Some(now);
-            tokio::time::sleep(duration).await;
         }
+
+        tokio::time::sleep(duration).await;
     }
 }
