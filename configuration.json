@@ -2,18 +2,17 @@
     "basic_search":[
         {
             "path": "search_text=Jogging%20Lacost&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1163096654879137874/2Jy6yuHow-Nbnr8neP1p1MviqcyA-ufoaBLZmJTRTEn2gCixT4p9faq3jBR0NW_H1FWC",
             "vip": false
         },
         {
             "path": "search_text=Pulls%20Cahart&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164180247424544789/uLp922EodtBGmRxnLmPryhRMRFn6agTiqQHBJ4MvUZLNlNzSjpFJrLPNyoCU7PjtGUI5",
             "vip": false
         },
         {
             "path": "search_text=Chaussure%20Nike&order=newest_first",
-            "vip": false
-        },
-        {
-            "path": "search_text=T-shirt&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1164180332975755264/5FMnr3RBBwvLoNixeNnsDtTzmlVkugNNNoZ8s9Yk-LdBN2Ypq1eyBvQPNDDKymD1O4gt",
             "vip": false
         }
     ]

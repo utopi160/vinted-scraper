@@ -40,7 +40,7 @@ async fn main() {
                             }), color: ORANGE 
                         });
     
-                        webhook.send("https://discord.com/api/webhooks/1163096654879137874/2Jy6yuHow-Nbnr8neP1p1MviqcyA-ufoaBLZmJTRTEn2gCixT4p9faq3jBR0NW_H1FWC").await;
+                        webhook.send(&search.webhook).await;
                     }
                 }
             }
