@@ -1,9 +1,15 @@
+use std::time::Duration;
+use tokio::time::sleep;
 use chrono::Utc;
+use std::sync::Arc;
+use tokio::sync::Mutex;
+
 use crate::models::config::Configuration;
 use crate::vinted::vinted_process_catalog;
 use crate::models::webhook::Webhook;
 use crate::models::embed::Embed;
 use crate::models::embed_image::EmbedImage;
+use crate::models::ratelimit::Ratelimiter;
 use crate::constant::ORANGE;
 
 mod models;
@@ -15,12 +21,13 @@ async fn main() {
     println!("Loading the configuration file ...");
     let config = Configuration::get();
     
-    let items_to_look_lens = config.basic_search.len();
-    let items_per_thread = config.basic_search.len().div_ceil(5);
-    
-    let mut last_item_id = 0;
+    let ratelimit = Arc::new(Mutex::new(Ratelimiter::new(29, Duration::from_secs(10))));
 
     let mut threads = Vec::new();
+
+    let items_to_look_lens = config.basic_search.len();
+    let items_per_thread = config.basic_search.len().div_ceil(5);
+    let mut last_item_id = 0;
 
     for thread_id in 0..5 {
         let idx = last_item_id + items_per_thread;
@@ -39,12 +46,19 @@ async fn main() {
             continue;
         }
 
+        let ratelimit_clone = ratelimit.clone();
         println!("[VINTED] - Creating a Thread ID: {}.", thread_id);
 
         let handle = tokio::spawn(async move {
             loop {
                 let search_list_cloned = search_list.clone();
                 for (id, search) in search_list_cloned.iter().enumerate()  {
+
+                    if !ratelimit_clone.lock().await.try_execute().await {
+                        sleep(Duration::from_secs(5)).await;
+                        continue;
+                    }
+
                     let items = vinted_process_catalog(&search.path).await;
                     let now = Utc::now().timestamp();
                     let last_scan = now - search.last_scan.unwrap_or(now);
