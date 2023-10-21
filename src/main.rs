@@ -20,7 +20,7 @@ async fn main() {
     
     let mut last_item_id = 0;
 
-    let mut handles = Vec::new();
+    let mut threads = Vec::new();
 
     for thread_id in 0..5 {
         let idx = last_item_id + items_per_thread;
@@ -39,7 +39,7 @@ async fn main() {
             continue;
         }
 
-        println!("Je sui aaaaa {} - {}", thread_id, search_list.len());
+        println!("[VINTED] - Creating a Thread ID: {}.", thread_id);
 
         let handle = tokio::spawn(async move {
             loop {
@@ -83,10 +83,10 @@ async fn main() {
             }
         });
 
-        handles.push(handle);
+        threads.push(handle);
     }
 
-    for handle in handles {
+    for handle in threads {
         handle.await.expect("Souccciss");
     }
 }
