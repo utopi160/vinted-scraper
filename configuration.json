@@ -159,6 +159,22 @@
             "path": "search_text=Abercrombie%20%26%20Fitch%20T-Shirt&order=newest_first",
             "webhook": "https://discord.com/api/webhooks/1165326868896043118/oF4k7kdrVwk5nH-VpSB1SmbW_Vm-qdd5ro2-sy90tU06EEAdZnXGAZcfjrxn6TwugRbl",
             "vip": false
+        },
+
+        {
+            "path": "search_text=Tommy%20Hilfiger%20Chemises&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165327911042154637/skTl7-o8R6-UrGCTC0vLTFy7wdrkKqm1lY-6GL6YWYuHHbqIhK6J2LMJp2zM5pQgCsuX",
+            "vip": false
+        },
+        {
+            "path": "search_text=Tommy%20Hilfiger%20Pulls&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165328037475258379/NK_vNwb-Pmt5VVSRRq0jd8U8CUlkrIdh7VgxS-i-b5c7GfjMs9b0S89uYdl-KPQ6FAuj",
+            "vip": false
+        },
+        {
+            "path": "search_text=Tommy%20Hilfiger%20Doudounes&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165328131423481946/68OrLJ-jwik06BtWFJ6bEShHErTtfZh2NRdHtkRSnUD81gX_uStUY1p92hTV6611eVxt",
+            "vip": false
         }
     ]
 }
