@@ -21,7 +21,7 @@ async fn main() {
     println!("Loading the configuration file ...");
     let config = Configuration::get();
     
-    let ratelimit = Arc::new(Mutex::new(Ratelimiter::new(29, Duration::from_secs(10))));
+    let ratelimit = Arc::new(Mutex::new(Ratelimiter::new(8, Duration::from_secs(9))));
 
     let mut threads = Vec::new();
 
@@ -55,16 +55,23 @@ async fn main() {
                 for (id, search) in search_list_cloned.iter().enumerate()  {
 
                     if !ratelimit_clone.lock().await.try_execute().await {
-                        sleep(Duration::from_secs(5)).await;
+                        sleep(Duration::from_secs(10)).await;
                         continue;
                     }
 
                     let items = vinted_process_catalog(&search.path).await;
+
+                    if items.len() == 0 {
+                        continue;
+                    }
+
                     let now = Utc::now().timestamp();
                     let last_scan = now - search.last_scan.unwrap_or(now);
                     
                     let webhook_url = search.webhook.clone();
         
+                    println!("Je fetch {} items (#{})", items.len(), thread_id);
+
                     for (_, item) in items  {
                         if item.photo.is_some() {
                             let photo = item.photo.unwrap();
