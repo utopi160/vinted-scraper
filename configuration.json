@@ -143,6 +143,22 @@
             "path": "search_text=The%20North%20Face%20Vestes&order=newest_first",
             "webhook": "https://discord.com/api/webhooks/1165323986796826755/AA3vndEqcl1IMmgYCLsXexLdeFPLXSjfGQ6KyU6u2vJUwph1NMHf2QSQuUcoTghAJ93Q",
             "vip": false
-        }     
+        },
+        
+        {
+            "path": "search_text=Abercrombie%20%26%20Fitch%20Pulls&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165326614691840010/3z68lmbqL9gSZ28J9XBxJ6cso0UlgtMDEj-R2YGf1zrT3Y4vicZk3x4ls-annCgxgve2",
+            "vip": false
+        }, 
+        {
+            "path": "search_text=Abercrombie%20%26%20Fitch%20Polos&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165326792060588053/-OaUNMADz_p1ZI6mkywG8Lj-3RiJhS4AsRb_mF4nSN5nNC5WBiCmxG6LsUx40DFD0TIY",
+            "vip": false
+        }, 
+        {
+            "path": "search_text=Abercrombie%20%26%20Fitch%20T-Shirt&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165326868896043118/oF4k7kdrVwk5nH-VpSB1SmbW_Vm-qdd5ro2-sy90tU06EEAdZnXGAZcfjrxn6TwugRbl",
+            "vip": false
+        }
     ]
 }
