@@ -20,7 +20,7 @@ mod constant;
 async fn main() {
     println!("Loading the configuration file ...");
     let config = Configuration::get();
-    let ratelimit = Arc::new(Mutex::new(Ratelimiter::new(8, Duration::from_secs(9))));
+    let ratelimit = Arc::new(Mutex::new(Ratelimiter::new(10, Duration::from_secs(9))));
 
     let mut threads = Vec::new();
 
