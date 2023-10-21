@@ -95,6 +95,22 @@
             "path": "search_text=Sac%20à%20dos&order=newest_first",
             "webhook": "https://discord.com/api/webhooks/1165307644634992720/BHjKx5x21Wv8knF8EqqqWjVO7vEENdgH-Wb8z8NyebDY-L9VlrP-7rsiK6hxEzabA6Pz",
             "vip": false
+        },
+
+        {
+            "path": "search_text=GAP%20Sweats&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165309317604446279/vy9PB19a8sKXQbI3iYVm8LZC_F-aOwCfXezp6QbVpezFBX985vaJEMxnFpvyHvo1V_5F",
+            "vip": false
+        },
+        {
+            "path": "search_text=GAP%20Pantalon&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165309796392640543/K_0_ojl1lhTZqnTEKT0QO-W_brs8zGqtLP0P7l6aRztSaHVyiXkPe_fAB4my0wWY5NJu",
+            "vip": false
+        },
+        {
+            "path": "search_text=GAP%20Doudoune&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165310200610291733/BjacScnJGaQCDD1mM0dGQnG30OSZyzH3jc1IOm6ks8sxjA4uNhHD8JjmwyVqprOCfmQd",
+            "vip": false
         }
     ]
 }
