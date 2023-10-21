@@ -25,10 +25,12 @@ async fn main() {
     let mut threads = Vec::new();
 
     let items_to_look_lens = config.basic_search.len();
-    let items_per_thread = config.basic_search.len().div_ceil(10);
+    let items_per_thread = config.basic_search.len().div_ceil(15);
     let mut last_item_id = 0;
 
-    for thread_id in 0..10 {
+    println!("Scraper starting whith {} items ...", config.basic_search.len());
+
+    for thread_id in 0..15 {
         let mut idx = last_item_id + items_per_thread;
 
         if idx > items_to_look_lens {
