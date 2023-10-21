@@ -22,7 +22,7 @@ async fn vinted_get(path: String) -> String {
     return res.unwrap().text().await.unwrap();
 }
 
-pub async fn vinted_process_catalog(search: String) -> HashMap<u32, Item> {
+pub async fn vinted_process_catalog(search: &String) -> HashMap<u32, Item> {
     let page = vinted_get(format!("catalog?{}", search)).await;
 
     let scraper = Scraper::build(r#"{"intl":"#.to_owned(), "{".to_owned())

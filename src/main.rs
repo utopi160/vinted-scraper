@@ -1,6 +1,3 @@
-use std::collections::HashMap;
-use std::sync::{Arc, Mutex};
-use std::time::Duration;
 use chrono::Utc;
 use crate::models::config::Configuration;
 use crate::vinted::vinted_process_catalog;
@@ -18,62 +15,78 @@ async fn main() {
     println!("Loading the configuration file ...");
     let config = Configuration::get();
     
-    let duration = Duration::from_secs(10);
-    let mut last_scans = Arc::new(Mutex::new(HashMap::new()));
-    let mut queries = 0;
+    let items_to_look_lens = config.basic_search.len();
+    let items_per_thread = config.basic_search.len().div_ceil(5);
+    
+    let mut last_item_id = 0;
 
-    // config.basic_search[id_cloned].last_scan = Some(now);
+    let mut handles = Vec::new();
 
-    loop {
-        for (id, search) in config.basic_search.clone().iter().enumerate() {
-            let cloned_search = search.clone();
-            let cloned_id = id.clone();
+    for thread_id in 0..5 {
+        let idx = last_item_id + items_per_thread;
 
-            let last_scans_clone = Arc::clone(&last_scans);
+        if idx > items_to_look_lens {
+            continue;
+        }
 
-            tokio::spawn(async move {
-                queries += 1;
+        let mut search_list = config.basic_search[
+            last_item_id.. if idx > items_to_look_lens { items_to_look_lens } else { idx }
+        ].to_vec();
+
+        last_item_id = idx;
+
+        if search_list.len() <= 0 {
+            continue;
+        }
+
+        println!("Je sui aaaaa {} - {}", thread_id, search_list.len());
+
+        let handle = tokio::spawn(async move {
+            loop {
+                let search_list_cloned = search_list.clone();
+                for (id, search) in search_list_cloned.iter().enumerate()  {
+                    let items = vinted_process_catalog(&search.path).await;
+                    let now = Utc::now().timestamp();
+                    let last_scan = now - search.last_scan.unwrap_or(now);
+                    
+                    let webhook_url = search.webhook.clone();
+        
+                    for (_, item) in items  {
+                        if item.photo.is_some() {
+                            let photo = item.photo.unwrap();
+                            let diff = now - photo.high_resolution.timestamp;
+        
+                            if diff < last_scan {
+                                println!("J'envoie #{} -> {} ({}s)", thread_id, item.id, diff);
             
-                if queries > 28 {
-                    tokio::time::sleep(duration).await;
-                }
-    
-                let items = vinted_process_catalog(cloned_search.path.clone()).await;
-                let now = Utc::now().timestamp();
-                let last_scan = now - cloned_search.last_scan.unwrap_or(now);
-                
-                let webhook_url = cloned_search.webhook.clone();
-    
-                for (_, item) in items  {
-                    if item.photo.is_some() {
-                        let photo = item.photo.unwrap();
-                        let diff = now - photo.high_resolution.timestamp;
-    
-                        if diff < last_scan {
-                            println!("J'envoie -> {} ({}s)", item.id, diff);
+                                let mut webhook = Webhook::new();
+                                webhook.embeds.insert(0, Embed { 
+                                    title: String::from("__**Nouveau Article :**__"),
+                                    description: format!(
+                                        "**Titre :** {}\n**Marque :** {}\n**Taille :** {}\n**Prix :** {}€\n**Posté :**  <t:{}:R>\n\n{}",
+                                        item.title, item.brand_title, item.size_title, item.total_item_price.amount, photo.high_resolution.timestamp,
+                                        item.url
+                                    ),
         
-                            let mut webhook = Webhook::new();
-                            webhook.embeds.insert(0, Embed { 
-                                title: String::from("__**Nouveau Article :**__"),
-                                description: format!(
-                                    "**Titre :** {}\n**Marque :** {}\n**Taille :** {}\n**Prix :** {}€\n**Posté :**  <t:{}:R>\n\n{}",
-                                    item.title, item.brand_title, item.size_title, item.total_item_price.amount, photo.high_resolution.timestamp,
-                                    item.url
-                                ),
-    
-                                image: Some(EmbedImage {
-                                    url: photo.url
-                                }), color: ORANGE 
-                            });
-        
-                            webhook.send(&webhook_url).await;
+                                    image: Some(EmbedImage {
+                                        url: photo.url
+                                    }), color: ORANGE 
+                                });
+            
+                                webhook.send(&webhook_url).await;
+                            }
                         }
                     }
-                }
 
-                let mut last_scans_guard = last_scans_clone.lock().unwrap();
-                last_scans_guard.insert(cloned_id, now);
-            });
-        }
+                    search_list[id].last_scan = Some(now);
+                }
+            }
+        });
+
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.await.expect("Souccciss");
     }
 }
