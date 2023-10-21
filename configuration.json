@@ -111,6 +111,22 @@
             "path": "search_text=GAP%20Doudoune&order=newest_first",
             "webhook": "https://discord.com/api/webhooks/1165310200610291733/BjacScnJGaQCDD1mM0dGQnG30OSZyzH3jc1IOm6ks8sxjA4uNhHD8JjmwyVqprOCfmQd",
             "vip": false
+        },
+
+        {
+            "path": "search_text=Superdry%20Pull&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165315454756208792/yfuiKeRhkeZEgafDOSlhEJIx5bOg5ewBuWI2yJRQnNT7EGk51KWZv4OEQBeV6x3pH73R",
+            "vip": false
+        },
+        {
+            "path": "search_text=Superdry%20Doudounes&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165315541725089865/8KVfRLQHMTE6DMGOPkH0mjs_zgb_sb3IG0a4CRfAnfaktR89MIzioVPNycXGq9ZBqhEs",
+            "vip": false
+        },
+        {
+            "path": "search_text=Superdry%20T-Shirt&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165315625527296000/gmHBUJOI75Hguiw3Mhn7tRWzex6iUJ88XhVe7vN4c2JmpToaOAt0a37555LPRZv1HYS7",
+            "vip": false
         }
     ]
 }
