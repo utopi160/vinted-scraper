@@ -63,6 +63,38 @@
             "path": "search_text=T-shirt%20Addidas&order=newest_first",
             "webhook": "https://discord.com/api/webhooks/1164230857528197161/12ryywlWBx1F9yqTyRQcWvMnBiuyP0TFJi2XyNNDZ5u4vp8bns5WOmN5UUplIDzkJIXW",
             "vip": false
+        },
+
+        {
+            "path": "search_text=Pull+Cahartt&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165303918675365910/7r-20Y_2ODAxrwzLLRbh--GV9nPyenvFHbG4JiaMQhp_37tUAmbMAWt_Zrc5E9okTbM5",
+            "vip": false
+        },
+        {
+            "path": "search_text=Carhartt%20pantalon&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165306311274156093/AJIXmZ8OBayCQUXWDd_b-rJhLp14ihSWg_BSso400VchZJaN3M4PZ89JbnPZ8LOsowXW",
+            "vip": false
+        },
+        {
+            "path": "search_text=Carhartt%20T-shirt&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165306483395801189/q208LGKMQkXAgfrNWLdAQL5NR7hxlIzWnwvo_hg16iDUZuISkPY_dV6JDn5FYOEWPyXp",
+            "vip": false
+        },
+
+        {
+            "path": "search_text=Dickies%20Pantalon&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165307460458909726/39ZyVhMheEOd_-AYe3pDGjkcc7mfJ69groBrGn4ydUkYUicVitTaYXROFQ9d9M7f3FBF",
+            "vip": false
+        },
+        {
+            "path": "search_text=Dickies%20Pull&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165307552289005568/p6YifIW4zqkgKouO0iEErCADWqPiAwwFmd__dFxKkhfF3K_NpMvxHovyQOCGOT1akfAK",
+            "vip": false
+        },
+        {
+            "path": "search_text=Sac%20à%20dos&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165307644634992720/BHjKx5x21Wv8knF8EqqqWjVO7vEENdgH-Wb8z8NyebDY-L9VlrP-7rsiK6hxEzabA6Pz",
+            "vip": false
         }
     ]
 }
