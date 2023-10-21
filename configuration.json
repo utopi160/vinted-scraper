@@ -191,6 +191,22 @@
             "path": "search_text=Nike%20Joggings&order=newest_first",
             "webhook": "https://discord.com/api/webhooks/1165335209575723008/IR3iitAkLC2kHr2QmhaXFBa9_zrjG5eqJaA5wdnSdfmbu0fV5bnx-KBh7r6HAUCeTjqN",
             "vip": false
+        },
+
+        {
+            "path": "search_text=Ralph%20Loren%20Polos&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165335852080185497/E4WDV8Q_yXaQuDk4GKBUN6LSlPUvnG5bmPk4R56k7xbxGwA6QUzPT2BfiFqTYhF9sV_h",
+            "vip": false
+        },
+        {
+            "path": "search_text=Ralph%20Loren%20T-Shirt&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165335941188174026/UJq5qNhiR6N51ib8lbGoRv9NTm2yyijg70ZoxqBdkTQ7fdwWgaz6686RdN_ycyyYtlu3",
+            "vip": false
+        },
+        {
+            "path": "search_text=Ralph%20Loren%20Pulls&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165336045735395348/_8miwXIT2Lg2VcLypFoHXGfMwt8Y_qUY4LAQQ95bXgmdHtNMoXwXh4i-nLGCV6zEVjSu",
+            "vip": false
         }
     ]
 }
