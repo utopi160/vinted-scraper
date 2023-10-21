@@ -127,6 +127,22 @@
             "path": "search_text=Superdry%20T-Shirt&order=newest_first",
             "webhook": "https://discord.com/api/webhooks/1165315625527296000/gmHBUJOI75Hguiw3Mhn7tRWzex6iUJ88XhVe7vN4c2JmpToaOAt0a37555LPRZv1HYS7",
             "vip": false
-        }
+        }, 
+
+        {
+            "path": "search_text=The%20North%20Face%20Pull&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165323768638484581/6ffYkhrlSUlVerbDuFwG5AkbAkegsBUdsD_nJgEUy2vDcXPYvQrpkhfMFJSmmOmIpr1G",
+            "vip": false
+        },
+        {
+            "path": "search_text=The%20North%20Face%20Joggings&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165323908296228875/W3pXwFHHvQoAV0Yl36TZAk9l2dQcclTsgIIjQLl9hObg_p-R6NKU1-luIDw8cfqZpIkD",
+            "vip": false
+        },
+        {
+            "path": "search_text=The%20North%20Face%20Vestes&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165323986796826755/AA3vndEqcl1IMmgYCLsXexLdeFPLXSjfGQ6KyU6u2vJUwph1NMHf2QSQuUcoTghAJ93Q",
+            "vip": false
+        }     
     ]
 }
