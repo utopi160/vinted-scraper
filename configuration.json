@@ -175,6 +175,22 @@
             "path": "search_text=Tommy%20Hilfiger%20Doudounes&order=newest_first",
             "webhook": "https://discord.com/api/webhooks/1165328131423481946/68OrLJ-jwik06BtWFJ6bEShHErTtfZh2NRdHtkRSnUD81gX_uStUY1p92hTV6611eVxt",
             "vip": false
+        },
+
+        {
+            "path": "search_text=Nike%20Chaussures&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165335055745437847/K3BGd2Ld0Fw4azzBSbGNcAK3cGZee8P7beQpZ_GIx9wMun2qTLZhnpn8VaP2DKTSBncj",
+            "vip": false
+        },
+        {
+            "path": "search_text=Nike%20Pulls&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165335122812354570/ZZ-iRQgsK8GHdPNQI88iZGS6UfZET7Ff0wp1bKAdFW1qpaXSyD3EZmHBRbXNPzz_zuDY",
+            "vip": false
+        },
+        {
+            "path": "search_text=Nike%20Joggings&order=newest_first",
+            "webhook": "https://discord.com/api/webhooks/1165335209575723008/IR3iitAkLC2kHr2QmhaXFBa9_zrjG5eqJaA5wdnSdfmbu0fV5bnx-KBh7r6HAUCeTjqN",
+            "vip": false
         }
     ]
 }
