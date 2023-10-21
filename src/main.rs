@@ -20,7 +20,6 @@ mod constant;
 async fn main() {
     println!("Loading the configuration file ...");
     let config = Configuration::get();
-    
     let ratelimit = Arc::new(Mutex::new(Ratelimiter::new(8, Duration::from_secs(9))));
 
     let mut threads = Vec::new();
@@ -30,10 +29,10 @@ async fn main() {
     let mut last_item_id = 0;
 
     for thread_id in 0..5 {
-        let idx = last_item_id + items_per_thread;
+        let mut idx = last_item_id + items_per_thread;
 
         if idx > items_to_look_lens {
-            continue;
+            idx = items_to_look_lens;
         }
 
         let mut search_list = config.basic_search[
@@ -47,7 +46,7 @@ async fn main() {
         }
 
         let ratelimit_clone = ratelimit.clone();
-        println!("[VINTED] - Creating a Thread ID: {}.", thread_id);
+        println!("[VINTED] - Creating a Thread ID: {} ({}).", thread_id, search_list.len());
 
         let handle = tokio::spawn(async move {
             loop {
