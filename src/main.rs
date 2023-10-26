@@ -20,7 +20,7 @@ mod constant;
 async fn main() {
     println!("Loading the configuration file ...");
     let config = Configuration::get();
-    let ratelimit = Arc::new(Mutex::new(Ratelimiter::new(8, Duration::from_secs(9))));
+    let ratelimit = Arc::new(Mutex::new(Ratelimiter::new(8, Duration::from_secs(9)))); // May beeee
 
     let mut threads = Vec::new();
 
@@ -62,7 +62,7 @@ async fn main() {
 
                     let items = vinted_process_catalog(&search.path).await;
 
-                    if items.len() == 0 {
+                    if items.len() == 0 { // Rate limit exeded 
                         continue;
                     }
 
@@ -71,7 +71,7 @@ async fn main() {
                     
                     let webhook_url = search.webhook.clone();
         
-                    println!("Je fetch {} items (#{})", items.len(), thread_id);
+                    println!("Fetch (#{}) of {} items", thread_id, items.len());
 
                     for (_, item) in items  {
                         if item.photo.is_some() {
@@ -79,7 +79,7 @@ async fn main() {
                             let diff = now - photo.high_resolution.timestamp;
         
                             if diff < last_scan {
-                                println!("J'envoie #{} -> {} ({}s)", thread_id, item.id, diff);
+                                println!("Sends #{} -> {} ({}s)", thread_id, item.id, diff);
             
                                 let mut webhook = Webhook::new();
                                 webhook.embeds.insert(0, Embed { 
@@ -109,6 +109,6 @@ async fn main() {
     }
 
     for handle in threads {
-        handle.await.expect("Souccciss");
+        handle.await.unwrap();
     }
 }
