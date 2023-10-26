@@ -14,8 +14,7 @@ pub mod configuration {
     pub struct BasicSearch {
         pub path: String,
         pub webhook: String,
-        pub last_scan: Option<i64>,
-        pub vip: bool
+        pub last_scan: Option<i64>
     }
 }
 

@@ -1,7 +1,6 @@
 {
     "threads": 15,
     "basic_search":[
-
         {
             "path": "search_text=Lacoste%20Polos&order=newest_first",
             "webhook": "https://discord.com/api/webhooks/1164226977029439518/FdwP7cfPLCLRyDXNHOF4KHGZ4TLy-rLOzQJ93g5O90mS01bRUkPKSqeJkzDT2o0oQG9I",
