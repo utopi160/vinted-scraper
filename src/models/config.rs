@@ -3,6 +3,7 @@ use serde::Deserialize;
 
 #[derive(Deserialize, Clone, Debug)]
 pub struct Configuration {
+    pub threads: u8,
     pub basic_search: Vec<configuration::BasicSearch>
 }
 
